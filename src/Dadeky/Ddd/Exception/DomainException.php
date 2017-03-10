@@ -1,5 +1,5 @@
 <?php
-namespace Ddd\Exception;
+namespace Dadeky\Ddd\Exception;
 
 class DomainException extends \Exception
 {

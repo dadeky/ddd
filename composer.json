@@ -21,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Ddd\\": "src/Ddd"
+      "Dadeky\\": "src/Dadeky"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Ddd\\Tests\\": "tests/Ddd/Tests"
+      "Dadeky\\Tests\\": "tests/Dadeky/Tests"
     }
   }
 }
