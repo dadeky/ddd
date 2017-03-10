@@ -1,0 +1,32 @@
+{
+  "name": "dadeky/ddd",
+  "description": "Library for Domain Driven Design.",
+  "authors": [
+    {
+      "name": "Darko Dvorski",
+      "email": "dadeky@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "homepage": "https://github.com/dadeky/ddd",
+  "license": "BSD-2-Clause",
+  "keywords": [
+    "file"
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ddd\\": "src/Ddd"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ddd\\Tests\\": "tests/Ddd/Tests"
+    }
+  }
+}
