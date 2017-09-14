@@ -16,9 +16,11 @@
 		"sort-packages" : true
 	},
 	"require" : {
-		"php" : ">=5.5",
-		"carlosbuenosvinos/ddd" : "^1.5",
-		"doctrine/orm" : "^2.5"
+		"php": ">=5.5",
+		"carlosbuenosvinos/ddd": "^1.5",
+		"doctrine/orm": "^2.5",
+		"php-amqplib/php-amqplib": "^2.6",
+		"videlalvaro/php-amqplib": "^2.6"
 	},
 	"autoload" : {
 		"psr-4" : {
