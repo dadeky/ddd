@@ -1,5 +1,5 @@
 <?php
-namespace Dadeky\Application\Notification;
+namespace Dadeky\Ddd\Application\Notification;
 
 use Ddd\Application\EventStore;
 use Ddd\Application\Notification\MessageProducer;
@@ -11,6 +11,7 @@ use JMS\Serializer\SerializerBuilder;
 class CustomNotificationService extends NotificationService
 {
     private $messageProducer;
+    private $serializer;
     
     public function __construct(
         EventStore $anEventStore, 
