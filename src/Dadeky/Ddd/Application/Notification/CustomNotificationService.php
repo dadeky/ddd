@@ -96,7 +96,7 @@ class CustomNotificationService extends NotificationService
             $this->serializer =
             SerializerBuilder::create()
             ->addMetadataDir(__DIR__ . '/../../Infrastructure/Application/Serialization/JMS/Config')
-            ->setCacheDir(__DIR__ . '/../../../../var/cache/jms-serializer')
+            ->setCacheDir(__DIR__ . '/../../../../../var/cache/jms-serializer')
             ->build()
             ;
         }
