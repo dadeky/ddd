@@ -1,32 +1,33 @@
 {
-  "name": "dadeky/ddd",
-  "description": "Library for Domain Driven Design.",
-  "authors": [
-    {
-      "name": "Darko Dvorski",
-      "email": "dadeky@gmail.com",
-      "role": "Developer"
-    }
-  ],
-  "homepage": "https://github.com/dadeky/ddd",
-  "license": "BSD-2-Clause",
-  "keywords": [
-    "file"
-  ],
-  "config": {
-    "sort-packages": true
-  },
-  "require": {
-    "php": ">=5.5"
-  },
-  "autoload": {
-    "psr-4": {
-      "Dadeky\\": "src/Dadeky"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Dadeky\\Tests\\": "tests/Dadeky/Tests"
-    }
-  }
+	"name" : "dadeky/ddd",
+	"description" : "Library for Domain Driven Design.",
+	"authors" : [{
+			"name" : "Darko Dvorski",
+			"email" : "dadeky@gmail.com",
+			"role" : "Developer"
+		}
+	],
+	"homepage" : "https://github.com/dadeky/ddd",
+	"license" : "BSD-2-Clause",
+	"keywords" : [
+		"file"
+	],
+	"config" : {
+		"sort-packages" : true
+	},
+	"require" : {
+		"php" : ">=5.5",
+		"carlosbuenosvinos/ddd" : "^1.5",
+		"doctrine/orm" : "^2.5"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Dadeky\\" : "src/Dadeky"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Dadeky\\Tests\\" : "tests/Dadeky/Tests"
+		}
+	}
 }
