@@ -1,5 +1,5 @@
 <?php
-namespace Dadeky\Application;
+namespace Dadeky\Application\Notification;
 
 use Ddd\Application\EventStore;
 use Ddd\Application\Notification\MessageProducer;
