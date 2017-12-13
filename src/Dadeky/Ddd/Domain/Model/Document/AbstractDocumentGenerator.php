@@ -8,6 +8,7 @@ abstract class AbstractDocumentGenerator
     
     const OUTPUT_FILE_EXTENSION_PDF = 'pdf';
     const OUTPUT_FILE_EXTENSION_XLS = 'xls';
+    const OUTPUT_FILE_EXTENSION_XML = 'xml';
     
     public static function getOutputTypeFile()
     {
