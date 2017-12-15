@@ -46,9 +46,9 @@ abstract class AbstractDocumentGenerator
      * @param string $filename
      * @param string $extension
      * @param string $outputTo
-     * @param string $documentRenderData
+     * @param string $documentRenderData Used in case of dynamic layout
      */
-    public abstract function generateDocument(DocumentDtoInterface $data, $path, $filename, $extension, $outputTo, $documentRenderData);
+    public abstract function generateDocument(DocumentDtoInterface $data, $path, $filename, $extension, $outputTo, $documentRenderData='');
     
     
     /**
