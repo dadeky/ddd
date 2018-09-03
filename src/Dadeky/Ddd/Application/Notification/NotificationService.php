@@ -8,7 +8,8 @@ use JMS\Serializer\SerializerBuilder;
 
 class NotificationService
 {
-    const MAX_LIMIT = 200;
+    const MAX_DELAY = 30;
+    const MIN_DELAY = 20;
     
     private $serializer;
     private $eventStore;
@@ -25,16 +26,20 @@ class NotificationService
         $this->messageProducer = $aMessageProducer;
     }
     
-    public function publishNotifications($exchangeName, $limit)
+    public function publishNotifications($exchangeName, $delay)
     {
-        if ($limit > self::MAX_LIMIT)
-            throw new \Exception(sprintf('Maximum limit of %1$s exceeded.', self::MAX_LIMIT));
+        $delay = intval($delay);
+        if ($delay > self::MAX_DELAY || $delay < self::MIN_DELAY)
+            throw new \Exception(sprintf('Delay option must be between %1$s and %2$s.', self::MIN_DELAY, self::MAX_DELAY));
+        
+        if (empty($delay))
+            throw new \InvalidArgumentException('Delay option must not be empty.');
         
         $publishedMessageTracker = $this->publishedMessageTracker;
         /** @var \Ddd\Domain\Event\StoredEvent[] $notifications */
-        $notifications = $this->eventStore->allStoredEventsSinceAnEventIdLimited(
+        $notifications = $this->eventStore->allStoredEventsSinceAnEventIdDelayed(
             $publishedMessageTracker->mostRecentPublishedMessageId($exchangeName), 
-            $limit);
+            $delay);
         
         if (!$notifications) {
             return 0;

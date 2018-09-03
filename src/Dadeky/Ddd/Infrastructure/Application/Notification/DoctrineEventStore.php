@@ -17,19 +17,20 @@ class DoctrineEventStore
     
     /**
      * @param integer $anEventId
-     * @param integer $limit
+     * @param integer $delay Delay in seconds
      * @return StoredEvent[]
      */
-    public function allStoredEventsSinceAnEventIdLimited($anEventId, $limit)
+    public function allStoredEventsSinceAnEventIdDelayed($anEventId, $delay)
     {
+        $currentTime = new \DateTimeImmutable();
+        $currentTimeMinusDelay = $currentTime->sub(\DateInterval::createFromDateString($delay.' seconds'));
         $anEventId = (int) $anEventId;
-        $limit = (int) $limit;
         $query = $this->eventStore->createQueryBuilder('e');
         if ($anEventId) {
             $query->where('e.eventId > :eventId');
-            $query->setParameters(array('eventId' => $anEventId));
+            $query->andWhere('e.occurredOn < :aTime');
+            $query->setParameters(array('eventId' => $anEventId, 'aTime' => $currentTimeMinusDelay));
         }
-        $query->setMaxResults($limit);
         $query->orderBy('e.eventId');
         
         return $query->getQuery()->getResult();
