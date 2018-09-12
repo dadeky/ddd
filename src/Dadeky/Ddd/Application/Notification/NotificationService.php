@@ -8,7 +8,7 @@ use JMS\Serializer\SerializerBuilder;
 
 class NotificationService
 {
-    const MAX_DELAY = 30;
+    const MAX_DELAY = 60;
     const MIN_DELAY = 20;
     
     private $serializer;
