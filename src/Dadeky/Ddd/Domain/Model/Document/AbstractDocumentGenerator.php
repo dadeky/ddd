@@ -5,6 +5,7 @@ abstract class AbstractDocumentGenerator
 {
     const OUTPUT_TYPE_FILE      = 'F';
     const OUTPUT_TYPE_STREAM    = 'I';
+    const OUTPUT_TYPE_STRING    = 'S';
     
     const OUTPUT_FILE_EXTENSION_PDF = 'pdf';
     const OUTPUT_FILE_EXTENSION_XLS = 'xls';
@@ -22,6 +23,11 @@ abstract class AbstractDocumentGenerator
     public static function getOutputTypeStream()
     {
         return self::OUTPUT_TYPE_STREAM;
+    }
+    
+    public static function getOutputTypeString()
+    {
+        return self::OUTPUT_TYPE_STRING;
     }
     
     
