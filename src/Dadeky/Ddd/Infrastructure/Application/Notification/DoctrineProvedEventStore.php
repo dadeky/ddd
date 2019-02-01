@@ -41,32 +41,20 @@ class DoctrineProvedEventStore extends EntityRepository implements EventStore
 
     public function allUnpublishedStoredEvents($exchangeName)
     {
-//         SELECT *
-//         FROM zend_apps.ddd_proved_domain_events as `event`
-//         where NOT EXISTS (
-//             SELECT * FROM zend_apps.ddd_proofs_of_publish
-//             WHERE event_id = `event`.`event_id`
-//             and exchange_name = 'ppa_bc'
-//         )
-//         ;
-        
-        $sub = $this->getEntityManager()->createQueryBuilder();
-        $sub->select('pop')
-            ->from('Dadeky\Ddd\Domain\Model\Event\ProofOfPublish', 'pop')
-            ->join('pop.storedEvent', 'ev')
-            ->where('ev.eventId = event.eventId')
-            ->andWhere('pop.exchangeName = :exchangeName')
-            ;
+        // SELECT pe.*
+        // FROM ddd_proved_domain_events AS pe
+        // LEFT JOIN ddd_proofs_of_publish AS pop ON pop.event_id = pe.event_id AND pop.exchange_name = ?
+        // WHERE pop.published_on IS NULL;
         
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('event')
             ->from('Dadeky\Ddd\Domain\Model\Event\ProvedStoredEvent', 'event')
-            ->where( $qb->expr()->not($qb->expr()->exists(
-                $sub->getDQL()
-            )))
+            ->leftJoin('event.proofsOfPublish', 'pop', Expr\Join::WITH, $qb->expr()->andX( $qb->expr()->eq('pop.exchangeName', ':exchangeName') ))
+            ->where($qb->expr()->isNull('pop.publishedOn'))
+            ->orderBy('event.eventId', 'ASC')
             ->setParameter('exchangeName', $exchangeName)
         ;
-        
+             
         $query = $qb->getQuery();
         return $query->getResult();
     }
