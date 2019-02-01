@@ -2,6 +2,7 @@
 namespace Dadeky\Ddd\Infrastructure\Application\Notification;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\Expr;
 use Ddd\Application\EventStore;
 use JMS\Serializer\SerializerBuilder;
 use Dadeky\Ddd\Domain\Model\Event\ProvedStoredEvent;
