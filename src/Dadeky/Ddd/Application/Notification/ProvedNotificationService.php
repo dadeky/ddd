@@ -25,6 +25,23 @@ class ProvedNotificationService
      */
     public function publishNotifications($exchangeName)
     {
+        
+        // *********************************************************
+        //          Make sure script runs only once
+        $file = 'ProvedEvents_Spread.lock';
+        
+        if(!file_exists($file)) {
+            $myfile = fopen($file, "w");
+            fclose($myfile);
+        }
+        $fp = fopen($file, "r+");
+        if (!flock($fp, LOCK_EX | LOCK_NB)) {
+            echo ' >> Spread already running! << ' . PHP_EOL;
+            //return false;
+            exit;
+        }
+        // *********************************************************
+        
         $notifications = $this->eventStore->allUnpublishedStoredEvents($exchangeName);
         
         if (!$notifications) {
