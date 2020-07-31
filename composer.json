@@ -16,11 +16,11 @@
 		"sort-packages" : true
 	},
 	"require" : {
-		"php": ">=5.5",
-		"carlosbuenosvinos/ddd": "^1.5",
-		"doctrine/orm": "^2.5",
-		"php-amqplib/php-amqplib": "^2.6",
-		"ramsey/uuid": "^4.0"
+		"php" : ">=5.5",
+		"carlosbuenosvinos/ddd" : "^1.5",
+		"doctrine/orm" : "^2.5",
+		"php-amqplib/php-amqplib" : "^2.6",
+		"ramsey/uuid" : "^3 || ^4"
 	},
 	"autoload" : {
 		"psr-4" : {
